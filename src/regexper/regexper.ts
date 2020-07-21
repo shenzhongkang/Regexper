@@ -8,7 +8,7 @@ class Regexper {
   form: HTMLFormElement;
   field: HTMLTextAreaElement;
   error: HTMLDivElement;
-  warnings: HTMLDivElement;
+  warnings: HTMLUListElement;
   svgContainer: HTMLDivElement;
   running: Parser | undefined;
   permalinkEnable: boolean = false;
@@ -19,7 +19,8 @@ class Regexper {
     this.form = root.querySelector('#regexp-form') as HTMLFormElement;
     this.field = root.querySelector('#regexp-input') as HTMLTextAreaElement;
     this.error = root.querySelector('#regexp-error') as HTMLDivElement;
-    this.warnings = root.querySelector('#regexp-warnings') as HTMLDivElement;
+    this.warnings = root.querySelector('#regexp-warnings') as HTMLUListElement;
+
     this.svgContainer = root.querySelector('#regexp-render') as HTMLDivElement;
   }
 

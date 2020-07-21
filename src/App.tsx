@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { init } from './regexper/main';
-import Regexper from './regexper';
+import RegexperComponent from './regexper';
 import styles from './styles/app.module.scss';
 import ValidatorComponent from './validator';
 
@@ -21,14 +21,10 @@ function App() {
           &copy;
         </a>
       </nav>
-      <main id='regexp-app' className={styles.main}>
-        <div className={styles.display}>
-          <Regexper />
-        </div>
+      <main className={styles.main}>
+        <RegexperComponent />
         <div className={styles.divider}></div>
-        <div className={styles.validate}>
-          <ValidatorComponent />
-        </div>
+        <ValidatorComponent />
       </main>
       <footer></footer>
     </div>

@@ -6,7 +6,7 @@ import styles from '../styles/regexper.module.scss';
 
 const RegexperComponent = () => {
   return (
-    <>
+    <div className={styles.display} id='regexp-app'>
       <form id='regexp-form' className={styles.form}>
         <textarea
           className={styles.input}
@@ -18,17 +18,27 @@ const RegexperComponent = () => {
         <button className={styles.button} type='submit'>
           Display
         </button>
+        {/* <ul className={styles.list} id='regexp-links'>
+          <li className={styles.download_svg}>
+            <a href='##' data-action='download-svg' download='image.svg' type='image/svg+xml'>
+              <Icon type='data-transfer-download' />
+              Download SVG
+            </a>
+          </li>
+          <li className={styles.download_png}>
+            <a href='##' data-action='download-png' download='image.png' type='image/png'>
+              <Icon type='data-transfer-download' />
+              Download PNG
+            </a>
+          </li>
+        </ul> */}
       </form>
       <div className={styles.results} id='regexp-results'>
         <div className={styles.error} id='regexp-error'></div>
-        <div className={styles.warnings} id='regexp-warnings'></div>
+        <ul className={styles.warnings} id='regexp-warnings'></ul>
         <div className={styles.renderer} id='regexp-render'></div>
       </div>
-      <div className={styles.baseSvg} id='regexp-render-base'>
-        <svg xmlns='http://www.w3.org/2000/svg' version='1.1'></svg>
-      </div>
-      <div className={styles.progress} id='regexp-progress'></div>
-    </>
+    </div>
   );
 };
 

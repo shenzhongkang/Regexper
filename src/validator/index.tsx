@@ -11,7 +11,7 @@ const ValidatorComponent = () => {
   }, []);
 
   return (
-    <>
+    <div className={styles.validate}>
       <form id='validator-form'>
         <textarea
           rows={4}
@@ -24,7 +24,7 @@ const ValidatorComponent = () => {
         </button>
       </form>
       <div className={styles.validator} id='validator-results'></div>
-    </>
+    </div>
   );
 }
 

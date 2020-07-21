@@ -26,7 +26,7 @@ export default class Parser {
     // The [ParserState](./javascript/parser_state.html) instance is used to
     // communicate between the parser and a running render, and to update the
     // progress bar for the running render.
-    this.state = new ParserState(document.body.querySelector('#regexp-progress'));
+    this.state = new ParserState(this.container.querySelector('#regexp-progress div'));
   }
 
   // DOM node that will contain the rendered expression. Setting this will add
@@ -35,7 +35,31 @@ export default class Parser {
   set container(cont) {
     this._container = cont;
     this._container.innerHTML = [
-      document.querySelector('#regexp-render-base').innerHTML,
+      `
+        <div class='svg'>
+          <svg
+            version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            xmlns:cc="http://creativecommons.org/ns#"
+            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+          >
+            <metadata>
+              <rdf:RDF>
+                <cc:License rdf:about="http://creativecommons.org/licenses/by/3.0/">
+                  <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction" />
+                  <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution" />
+                  <cc:requires rdf:resource="http://creativecommons.org/ns#Notice" />
+                  <cc:requires rdf:resource="http://creativecommons.org/ns#Attribution" />
+                  <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+                </cc:License>
+              </rdf:RDF>
+            </metadata>
+          </svg>
+        </div>
+        <div id='regexp-progress'>
+          <div style={{ width: 0 }}></div>
+        </div>
+      `,
       this.options.keepContent ? this.container.innerHTML : ''
     ].join('');
     this._addClass('svg-container');
@@ -62,17 +86,15 @@ export default class Parser {
   // Parse a regular expression into a tree of
   // [Nodes](./javascript/node.html) that can then be used to render an SVG.
   // - __expression__ - Regular expression to parse.
-  parse(expression) {
+  async parse(expression) {
     this._addClass('loading');
 
     // Allow the browser to repaint before parsing so that the loading bar is
     // displayed before the (possibly lengthy) parsing begins.
-    return util.tick().then(() => {
-      javascript.Parser.SyntaxNode.state = this.state;
-
-      this.parsed = javascript.parse(expression.replace(/\n/g, '\\n'));
-      return this;
-    });
+    await util.tick();
+    javascript.Parser.SyntaxNode.state = this.state;
+    this.parsed = javascript.parse(expression.replace(/\n/g, '\\n'));
+    return this;
   }
 
   // Render the parsed expression to an SVG.
@@ -95,7 +117,7 @@ export default class Parser {
       // Stop and remove loading indicator after render is totally complete.
       .then(() => {
         this._removeClass('loading');
-        // this.container.removeChild(document.body.querySelector('.progress'));
+        this.container.removeChild(this.container.querySelector('#regexp-progress'));
       });
   }
 
