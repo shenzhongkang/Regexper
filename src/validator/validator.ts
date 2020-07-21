@@ -37,7 +37,7 @@ class Validator {
       return;
     }
     let result: boolean = new RegExp(this.sourceValue).test(this.targetValue);
-    this.results.innerHTML = result ? `<p style="color: green">通过正则测试</p>` : `<p style="color: red">未通过正则测试</p>`;
+    this.results.innerHTML = result ? `<p style="color: green">Pass Validator</p>` : `<p style="color: red">Unpass Validator</p>`;
   }
 }
 
