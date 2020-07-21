@@ -1,0 +1,27 @@
+@import 'variables';
+
+.output {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  font-family: Consolas, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  resize: vertical;
+}
+.button {
+  width: 100px;
+  border: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  background-color: $green;
+  outline: none;
+  color: $black;
+  cursor: pointer;
+}
+.validator {
+  margin: 20px 0;
+  padding: 10px;
+}

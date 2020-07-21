@@ -1,0 +1,55 @@
+@import 'variables';
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: $white;
+  nav,
+  footer {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 16px;
+    color: $white;
+    background-color: $black;
+    a {
+      color: $green;
+      text-decoration: none;
+      margin-left: 5px;
+    }
+  }
+  main {
+    flex: 1;
+    display: flex;
+    height: calc(100% - 80px);
+    overflow-y: auto;
+    padding: 20px;
+    .display {
+      flex: 1;
+    }
+    .divider {
+      margin: 20px;
+      background-color: $tan;
+      width: 1px;
+    }
+    .validate {
+      flex: 1;
+    }
+  }
+}
+
+:global {
+  body.has-results #regexp-render,
+  body.has-error #regexp-render,
+  body.is-loading #regexp-render {
+    display: flex;
+  }
+
+  body.has-error #regexp-error {
+    display: block;
+  }
+  body.has-results #regexp-warnings {
+    display: block;
+  }
+}

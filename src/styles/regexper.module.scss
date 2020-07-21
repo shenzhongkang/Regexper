@@ -1,0 +1,99 @@
+@import 'variables';
+
+.form {
+  .input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    font-family: Consolas, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    resize: vertical;
+  }
+  .button {
+    width: 100px;
+    border: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: $green;
+    outline: none;
+    color: $black;
+    cursor: pointer;
+  }
+}
+.error,
+.warnings {
+  display: none;
+}
+.renderer {
+  margin: 20px 0;
+  border: 1px solid $tan;
+  border-radius: 4px;
+  display: none;
+  padding: 5px;
+  :global {
+    svg {
+      background-color: $white;
+      .root text,
+      .root tspan {
+        font: 12px Arial;
+      }
+      .root path {
+        fill-opacity: 0;
+        stroke-width: 2px;
+        stroke: $black;
+      }
+      .root circle {
+        fill: $gray;
+        stroke-width: 2px;
+        stroke: $black;
+      }
+      .anchor text,
+      .any-character text {
+        fill: $white;
+      }
+      .anchor rect,
+      .any-character rect {
+        fill: $gray;
+      }
+      .escape text,
+      .charset-escape text,
+      .literal text {
+        fill: $black;
+      }
+      .escape rect,
+      .charset-escape rect {
+        fill: $green;
+      }
+      .literal rect {
+        fill: $blue;
+      }
+      .charset .charset-box {
+        fill: $tan;
+      }
+      .subexp .subexp-label tspan,
+      .charset .charset-label tspan,
+      .match-fragment .repeat-label tspan {
+        font-size: 10px;
+      }
+      .repeat-label {
+        cursor: help;
+      }
+      .subexp .subexp-label tspan,
+      .charset .charset-label tspan {
+        dominant-baseline: text-after-edge;
+      }
+      .subexp .subexp-box {
+        stroke: $light-gray;
+        stroke-dasharray: 6, 2;
+        stroke-width: 2px;
+        fill-opacity: 0;
+      }
+      .quote {
+        fill: $light-gray;
+      }
+    }
+  }
+}
